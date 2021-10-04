@@ -148,7 +148,7 @@ const App = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-  }, [])
+  }, [checkIfWalletIsConnected])
 
   return (
     <div className="App">
@@ -171,7 +171,7 @@ const App = () => {
                         className="opensea-link"
                         target="_blank"
                         rel="noopener noreferrer">
-                        🌊 View Collection on OpenSea
+                        <span role="img" aria-label="whale">🌊</span> View Collection on OpenSea
                     </a>
                   </button>
                 </div>
