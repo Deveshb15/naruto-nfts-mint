@@ -1,6 +1,6 @@
 import './styles/App.css';
 import twitterLogo from './assets/twitter-logo.svg';
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { ethers } from "ethers"
 import { CircleToBlockLoading } from 'react-loadingg';
 
@@ -20,7 +20,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [nftCount, setNftCount] = useState(0)
 
-  const checkIfWalletIsConnected = async () => {
+  const checkIfWalletIsConnected = useCallback(async () => {
     const { ethereum } = window;
     if(!window.ethereum) {
       console.log("Make sure you have metamask installed!")
@@ -36,7 +36,7 @@ const App = () => {
     } else {
       console.log("No authorized account found.")
     }
-  }
+  }, [])
 
   const connectWallet = async () => {
     try {
@@ -147,8 +147,8 @@ const App = () => {
   )
 
   useEffect(() => {
-    checkIfWalletIsConnected();
-  }, [checkIfWalletIsConnected])
+    checkIfWalletIsConnected();// eslint-disable-next-line
+  }, [])
 
   return (
     <div className="App">
