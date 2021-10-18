@@ -150,6 +150,10 @@ const App = () => {
     checkIfWalletIsConnected();// eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    getTotalNFTsMintedSoFar()
+  },[nftCount])
+
   return (
     <div className="App">
         {loading ? (
